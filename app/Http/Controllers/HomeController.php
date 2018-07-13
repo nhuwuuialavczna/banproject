@@ -23,7 +23,7 @@ class HomeController extends Controller
             Session::put('loaitailieu', 'tatca'); // tất cả project
         }
 
-        return view('trangchu', ['getAll' => $listLinhVuc]);
+        return view('trangchu', ['getAll' => $listLinhVuc,'title'=>'Bán đồ án, dự án, luận văn tốt nghiệp bài tập lớn công nghệ thông tin']);
     }
 
     public function XemTatCa()
@@ -35,7 +35,7 @@ class HomeController extends Controller
         $listProject = $taiLieu->get();
         Session::put('listTaiLieu', $listProject); // tất cả project
         Session::put('loaitailieu', 'tatca'); // tất cả project
-        return view('trangchu', ['getAll' => $listLinhVuc]);
+        return view('trangchu', ['getAll' => $listLinhVuc,'title'=>'Bán đồ án, dự án, luận văn tốt nghiệp bài tập lớn công nghệ thông tin']);
     }
 
 
@@ -46,21 +46,21 @@ class HomeController extends Controller
         $lichsunaptien = LichSuNapTien::where('taikhoan', $khachhang->taikhoan)->orderBy('thoigiannaptien', 'DESC')->take(5)->get();
 
         $lichsutaixuong = TaiXuong::where('taikhoan', $khachhang->taikhoan)->orderBy('thoigian', 'DESC')->take(5)->get();
-        return view('naptien', ['lichSu' => $lichsunaptien, 'lichSuTaiXuong' => $lichsutaixuong]);
+        return view('naptien', ['lichSu' => $lichsunaptien, 'lichSuTaiXuong' => $lichsutaixuong,'title'=>'Nạp tiền vào tài khoản']);
     }
 
     function DangNhap()
     {
-        return view('dangnhap', ['tb' => '']);
+        return view('dangnhap', ['tb' => '','title'=>'Đăng nhập']);
     }
 
-    function ChiTiet()
-    {
-        return view('chitietproject');
-    }
+//    function ChiTiet()
+//    {
+//        return view('chitietproject',['title'=>'Đăng nhập']);
+//    }
 
     public function ThongBao()
     {
-        return view('thongbao');
+        return view('thongbao',['title'=>'Thông báo']);
     }
 }

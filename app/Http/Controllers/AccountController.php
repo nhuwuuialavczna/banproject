@@ -38,7 +38,7 @@ class AccountController extends Controller
             }
         }
 
-        return view('dangnhap', ['tb' => 'Tài khoản hoặc mật khẩu không đúng']);
+        return view('dangnhap', ['tb' => 'Tài khoản hoặc mật khẩu không đúng','title'=>'Đăng nhập']);
     }
 
     public function Register(Request $request)
@@ -74,7 +74,7 @@ class AccountController extends Controller
 
     public function TrangXacNhan()
     {
-        return view('xacnhan', ['tb' => '']);
+        return view('xacnhan', ['tb' => '','title'=>'Xác nhận']);
     }
 
     public function Logout()
@@ -98,7 +98,7 @@ class AccountController extends Controller
                 return view('xacnhan', ['tb' => 'Xin nhận lại mã xác nhận vào bên dưới.']);
             }
         } else {
-            return view('xacnhan', ['tb' => 'Xin nhận lại mã xác nhận và username (nếu có ô để nhập) vào bên dưới.']);
+            return view('xacnhan', ['tb' => 'Xin nhận lại mã xác nhận và username (nếu có ô để nhập) vào bên dưới.','title'=>'Xác nhận tài khoản']);
         }
 
 
@@ -113,7 +113,7 @@ class AccountController extends Controller
             $message->to($email, 'Bán project')->subject('Lấy lại mật khẩu');
         });
         Session::put('thongbao', 'laymatkhau');
-        return view('thongbao');
+        return view('thongbao',['title'=>'Lấy mật khẩu '.$email]);
     }
 
 
@@ -194,7 +194,7 @@ class AccountController extends Controller
 
             $lichSuNapTien->save();
 
-            return redirect('/thongbao', ['tb' => '']);
+            return redirect('/thongbao', ['tb' => '','title'=>'Thông báo nạp tiền']);
         }
 
     }

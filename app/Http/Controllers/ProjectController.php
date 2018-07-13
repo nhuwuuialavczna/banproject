@@ -23,7 +23,7 @@ class ProjectController extends Controller
         $listProject = TaiLieu::where('maloai', $loaiTaiLieu)->get();
         Session::put('loaitailieu', $loaiTaiLieu); // tất cả project
         Session::put('listTaiLieu', $listProject); // tất cả project
-        return view('trangchu', ['getAll' => $listLinhVuc]);
+        return view('trangchu', ['getAll' => $listLinhVuc,'title'=>'Bán đồ án, dự án, luận văn tốt nghiệp bài tập lớn công nghệ thông tin']);
     }
 
     public function getNameLoai($loai)
@@ -91,7 +91,7 @@ class ProjectController extends Controller
         Session::put('dangxem', $dangxem);
         $linhVuc = new LinhVuc();
         $listLinhVuc = $linhVuc->get();
-        return view('trangchu', ['getAll' => $listLinhVuc]);
+        return view('trangchu', ['getAll' => $listLinhVuc,'title'=>'Bán đồ án, dự án, luận văn tốt nghiệp bài tập lớn công nghệ thông tin']);
     }
 
 
@@ -101,7 +101,7 @@ class ProjectController extends Controller
         $tailieu = TaiLieu::where('matailieu', $matailieu)->first(); // lấy ra 1 tài liệu
         TaiLieu::where('matailieu', $matailieu)->update(['soluotxem' => $tailieu->soluotxem + 1]);
         $listCungLoai = TaiLieu::where('maloai', $tailieu->maloai)->orderBy('gia', 'DESC')->take(5)->get();
-        return view('chitietproject', ['getOne' => $tailieu, 'listCungLoai' => $listCungLoai]);
+        return view('chitietproject', ['getOne' => $tailieu, 'listCungLoai' => $listCungLoai,'title'=>'Chi tiết '.$tailieu->tentailieu]);
     }
 
     public function ThanhToan(Request $request)
