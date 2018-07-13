@@ -1,0 +1,1 @@
+<h3>Bạn vừa lấy lại mật khẩu thành công. Mật khẩu của bạn là {{$mk}}</h3>
