@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\LichSuNapTien;
 use App\LinhVuc;
 use App\TaiLieu;
 use Illuminate\Support\Facades\Session;
@@ -22,10 +23,12 @@ class HomeController extends Controller
     }
 
 
-
     public function NapTien()
     {
-        return view('naptien');
+//        $lichsu = new LichSuNapTien();
+        $khachhang = Session::get('khachhang');
+        $lichsunaptien = LichSuNapTien::where('taikhoan', $khachhang->taikhoan)->get();
+        return view('naptien', ['lichSu' => $lichsunaptien]);
     }
 
     function DangNhap()

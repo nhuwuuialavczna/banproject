@@ -171,7 +171,7 @@ class AccountController extends Controller
             return redirect('/thongbao', ['tb' => '']);
         } else {
             $khachhang = Session::get('khachhang');
-            $maphuongthuc = 'card';
+            $maphuongthuc = 'Nạp card';
             $soTienMoi = $khachhang->sodu + (int)$rs->card_amount;
             $khachhang->sodu = $soTienMoi;
 

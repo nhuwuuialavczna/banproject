@@ -17,10 +17,8 @@ class ProjectController extends Controller
         $linhVuc = new LinhVuc();
         Session::put('dangxem', 'Đang xem trên tất cả project thuộc ' . $tenloai);
         $listLinhVuc = $linhVuc->get();
-
         $listProject = TaiLieu::where('maloai', $loaiTaiLieu)->get();
         Session::put('listTaiLieu', $listProject); // tất cả project
-
         return view('trangchu', ['getAll' => $listLinhVuc]);
     }
 

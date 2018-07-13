@@ -32,8 +32,23 @@
             <p>- Khi chuyển khoảng các bạn sẽ được tặng thêm 10% số tiền nạp</p>
         </div>
         <div class="col-sm-4">
-            <h3>Lịch sử nạp tiền</h3>
-            <hr>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span
+                                class="glyphicon glyphicon-menu-hamburger"></span> Lịch sử nạp tiền
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    @foreach($lichSu as $ls)
+                        <p><span class="glyphicon glyphicon-triangle-right"></span> {{$ls->sotien}} VNĐ
+                            - {{$ls->maphuongthuc}}
+                            <span class="label label-info pull-right">{{$ls->thoigiannaptien}}</span></p>
+                    @endforeach
+
+                </div>
+
+            </div>
+
         </div>
     </div>
 @endsection

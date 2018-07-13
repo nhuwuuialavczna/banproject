@@ -34,7 +34,7 @@
             </div>
             <div class="row">
                 <div class="btn-group alg-right-pad">
-                    <button type="button" class="btn btn-default"><strong>3005 </strong>items</button>
+                    <button type="button" class="btn btn-default"><strong>{{count(Session::get('listTaiLieu'))}} </strong>project</button>
                     <div class="btn-group">
                         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                             Sắp xếp &nbsp;
