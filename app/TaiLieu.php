@@ -21,4 +21,14 @@ class TaiLieu extends Model
         return $this->loaiTaiLieu->toArray();
     }
 
+
+    public function listTaiXuong()
+    {
+        return $this->hasMany('App\TaiXuong', 'matailieu');
+    }
+
+    public function getListTaiXuong()
+    {
+        return $this->listTaiXuong;
+    }
 }

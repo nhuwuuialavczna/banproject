@@ -160,7 +160,7 @@ class AccountController extends Controller
         $ref_code = $coin4 + $coin3 * 1000 + $coin2 * 1000000 + $coin1 * 100000000;
 
 
-        $ngayGioHienTai = 'Thoi gian chua xac dinh';
+        $ngayGioHienTai  = date('Y-m-d H:i:s');;
 
 
         $rs = $call->CardPay($sopin, $soseri, $type_card, $ref_code, "", "", "");

@@ -16,7 +16,8 @@
                                 <p><span class="glyphicon glyphicon-triangle-right"></span> <a
                                             href="/project/locproject?loaitailieu={{$loai->maloai}}&tenloai={{$loai->tenloai}}">{{$loai->tenloai}}</a>
                                     <span
-                                            class="label label-info pull-right">434</span></p>
+                                            class="label label-info pull-right">{{count($loai->getListTaiLieu())}}</span>
+                                </p>
                             @endforeach
 
                         </div>
@@ -29,25 +30,35 @@
         <div class="col-sm-8">
             <div>
                 <ol class="breadcrumb">
-                    <li style="color: red"><b>{{Session::get('dangxem')}}</b></li>
+                    <li style="color: red"><b><span class="glyphicon glyphicon-flag"></span> {{Session::get('dangxem')}}</b></li>
                 </ol>
             </div>
             <div class="row">
                 <div class="btn-group alg-right-pad">
-                    <button type="button" class="btn btn-default"><strong>{{count(Session::get('listTaiLieu'))}} </strong>project</button>
+                    <button type="button" class="btn btn-default">
+                        <strong>{{count(Session::get('listTaiLieu'))}} </strong>project
+                    </button>
                     <div class="btn-group">
                         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                            Sắp xếp &nbsp;
+                            <span class="glyphicon glyphicon-sort"></span> Sắp xếp &nbsp;
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Giá cao nhất</a></li>
+                            <li>
+                                <a href="/project/sapxep?cachsapxep=giacaonhat&loaitailieu={{Session::get('loaitailieu')}}">Giá
+                                    cao nhất</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">Giá thấp nhất</a></li>
+                            <li>
+                                <a href="/project/sapxep?cachsapxep=giathapnhat&loaitailieu={{Session::get('loaitailieu')}}">Giá
+                                    thấp nhất</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">Tải nhiều nhất</a></li>
+                            <li>
+                                <a href="/project/sapxep?cachsapxep=tainhieunhat&loaitailieu={{Session::get('loaitailieu')}}">Tải
+                                    nhiều nhất</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">Xem nhiều nhất</a></li>
+                            <li>
+                                <a href="/project/sapxep?cachsapxep=xemnhieunhat&loaitailieu={{Session::get('loaitailieu')}}">Xem
+                                    nhiều nhất</a></li>
                         </ul>
                     </div>
                 </div>
@@ -97,19 +108,17 @@
 
             </div>
             <!-- /.row -->
-            <div class="row">
-                <ul class="pagination alg-right-pad">
-                    <li><a href="#">&laquo;</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&raquo;</a></li>
-                </ul>
-            </div>
-
-
+            {{--<div class="row">--}}
+            {{--<ul class="pagination alg-right-pad">--}}
+            {{--<li><a href="#">&laquo;</a></li>--}}
+            {{--<li><a href="#">1</a></li>--}}
+            {{--<li><a href="#">2</a></li>--}}
+            {{--<li><a href="#">3</a></li>--}}
+            {{--<li><a href="#">4</a></li>--}}
+            {{--<li><a href="#">5</a></li>--}}
+            {{--<li><a href="#">&raquo;</a></li>--}}
+            {{--</ul>--}}
+            {{--</div>--}}
         </div>
 
     </div>
@@ -141,14 +150,18 @@
                         <h4 class="modal-title">Thông báo</h4>
                     </div>
                     <div class="modal-body">
-                        <p>- Bạn có muốn tải tài liệu này với giá {{$project->gia}} VNĐ. Bạn nên <a
-                                    href="/project/chitiet?matailieu={{$project->matailieu}}">xem trước</a> project này
+                        <p>Bạn có muốn tải tài liệu này với giá {{$project->gia}} VNĐ. Bạn nên <a
+                                    href="/project/chitiet?matailieu={{$project->matailieu}}"> <button type="button" class="btn btn-success"><span
+                                            class="glyphicon glyphicon-eye-open"></span> Xem trước
+                                </button></a> project này
                             trước khi
                             tải</p>
                     </div>
                     <div class="modal-footer">
                         <a href="/project/thanhtoan?matailieu={{$project->matailieu}}&gia={{$project->gia}}&soluottai={{$project->soluottai}}">
-                            <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-download-alt"></span> Tiếp tục tải xuống</button>
+                            <button type="button" class="btn btn-primary"><span
+                                        class="glyphicon glyphicon-download-alt"></span> Tiếp tục tải xuống
+                            </button>
                         </a>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                     </div>

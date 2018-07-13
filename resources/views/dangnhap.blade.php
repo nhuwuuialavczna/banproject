@@ -141,18 +141,17 @@
 @section('NoiDung')
     <div class="container">
 
-
         <div class="col-sm-6">
             <h3>Đăng nhâp</h3>
             <form action="/account/dangnhap" id="login" method="post">
                 <label for="username">Tên tài khoản</label>
                 <input type="text" placeholder="Username" name="username" id="username" class="form-control"><br>
                 <label for="password">Mật khẩu</label>
-                <input type="text" placeholder="Password" name="password" id="password" class="form-control"><br>
+                <input type="password" placeholder="Password" name="password" id="password" class="form-control"><br>
                 {{ csrf_field() }}
                 <p style="color: red"> {{$tb}}</p>
-                <input type="submit" value="Đăng nhập" class="btn btn-success">
-                <a type="button" data-toggle="modal" data-target="#quenmatkhau" class="btn btn-success">Quên mật
+                <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-log-in"></span> Đăng nhập</button>
+                <a type="button" data-toggle="modal" data-target="#quenmatkhau" class="btn btn-success"><span class="glyphicon glyphicon-question-sign"></span> Quên mật
                     khẩu</a>
             </form>
 
@@ -160,16 +159,17 @@
         <div class="col-sm-6">
             <h3>Đăng kí</h3>
             <form id="register" action="/account/register" method="post">
-                <input type="text" placeholder="Username" id="user" name="user" class="form-control"><br>
-                <input type="text" placeholder="Password" id="pass" name="pass" class="form-control"><br>
-                <input type="text" placeholder="Password" id="re-pass" name="pass" class="form-control"><br>
+                <input type="text" placeholder="Tài khoản" id="user" name="user" class="form-control"><br>
+                <input type="password" placeholder="Mật khẩu" id="pass" name="pass" class="form-control"><br>
+                <input type="password" placeholder="Nhập lại mật khẩu" id="re-pass" name="pass" class="form-control"><br>
                 <input type="text" placeholder="Email" id="email" name="email" class="form-control"><br>
                 <input type="text" placeholder="Số điện thoại" id="sdt" name="sdt" class="form-control"><br>
                 <input type="text" placeholder="Tên" id="ten" name="ten" class="form-control"><br>
                 {{ csrf_field() }}
+
             </form>
             <p id="loidangki" style="color: red"></p>
-            <input type="button" id="btnDangKi" value="Đăng kí" class="btn btn-success">
+            <button type="submit" id="btnDangKi" value="Đăng kí" class="btn btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Đăng kí</button>
         </div>
     </div>
 

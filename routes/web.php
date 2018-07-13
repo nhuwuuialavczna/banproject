@@ -22,6 +22,7 @@ $id = '55894';
 Route::get('napthe', 'AccountController@NapThe');
 
 Route::get('/', 'HomeController@Index');
+Route::get('/xemtatca', 'HomeController@XemTatCa');
 Route::get('/dangnhap', 'HomeController@DangNhap');
 Route::get('/naptien', 'HomeController@NapTien');
 Route::get('/thongbao', 'HomeController@ThongBao');
@@ -52,9 +53,23 @@ Route::group(['prefix' => 'account'], function () {
 
 });
 
+//Route::get('test', function () {
+//    $listTaiLieu = \App\TaiXuong::find('P099238supmembadao')->getTaiLieu();
+//
+//    var_dump($listTaiLieu);
+//
+//});
 
 Route::group(['prefix' => 'project'], function () {
     Route::get('locproject', 'ProjectController@LocProject');
     Route::get('chitiet', 'ProjectController@ChiTiet');
     Route::get('thanhtoan', 'ProjectController@ThanhToan');
+    Route::get('sapxep', 'ProjectController@SapXep');
+
 });
+
+function cmp($a, $b)
+{
+    return 1;
+}
+

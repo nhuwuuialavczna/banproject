@@ -10,4 +10,15 @@ class TaiXuong extends Model
     public $timestamps = false;
     protected $primaryKey = 'mataixuong';
     public $incrementing = false;
+
+    public function taiLieu()
+    {
+        return $this->belongsTo('App\TaiLieu', 'matailieu');
+    }
+
+    public function getTaiLieu()
+    {
+        return $this->taiLieu->toArray();
+    }
+
 }
