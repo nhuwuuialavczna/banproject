@@ -126,7 +126,7 @@ class AccountController extends Controller
         }
         return 'ok';
     }
-
+    //vzxvczxcvzxvc
     public function DoiMatKhau(Request $request)
     {
         $matkhau = $request->matkhau;
