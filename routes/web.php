@@ -15,7 +15,7 @@
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
-$email = '15130052@st.hcmuaf.edu.vn';
+$pass = '92d73ff0f0e48826ad78341493208991';
 
 Route::get('/', 'HomeController@Index');
 Route::get('/dangnhap', 'HomeController@DangNhap');

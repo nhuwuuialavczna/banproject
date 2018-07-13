@@ -134,5 +134,4 @@ class AccountController extends Controller
         KhachHang::where('taikhoan', $kh->taikhoan)->update(['matkhau' => $matkhau]);
         return 'ok';
     }
-
 }
