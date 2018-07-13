@@ -193,7 +193,7 @@ class AccountController extends Controller
             $lichSuNapTien->maphuongthuc = $maphuongthuc;
 
             $lichSuNapTien->save();
-
+//vzxvzxcv
             return redirect('/thongbao', ['tb' => '','title'=>'Thông báo nạp tiền']);
         }
 
