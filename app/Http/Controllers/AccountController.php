@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\KhachHang;
+use App\LichSuNapTien;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use App\MobiCard;
+use App\Result;
+use App\Config;
+
 
 class AccountController extends Controller
 {
@@ -126,6 +131,7 @@ class AccountController extends Controller
         }
         return 'ok';
     }
+
     //vzxvczxcvzxvc
     public function DoiMatKhau(Request $request)
     {
@@ -134,4 +140,64 @@ class AccountController extends Controller
         KhachHang::where('taikhoan', $kh->taikhoan)->update(['matkhau' => $matkhau]);
         return 'ok';
     }
+
+    public function NapThe(Request $request)
+    {
+        $soseri = $request->txtSoSeri;
+        $sopin = $request->txtSoPin;
+        $type_card = $request->loaithe;
+        $call = new MobiCard();
+
+
+//        $arytype = array(92 => 'VMS', 93 => 'VNP', 107 => 'VIETTEL', 121 => 'VCOIN', 120 => 'GATE');
+        //Tiến hành kết nối thanh toán Thẻ cào.
+        $call = new MobiCard();
+        $rs = new Result();
+        $coin1 = rand(10, 999);
+        $coin2 = rand(0, 999);
+        $coin3 = rand(0, 999);
+        $coin4 = rand(0, 999);
+        $ref_code = $coin4 + $coin3 * 1000 + $coin2 * 1000000 + $coin1 * 100000000;
+
+
+        $ngayGioHienTai = 'Thoi gian chua xac dinh';
+
+
+        $rs = $call->CardPay($sopin, $soseri, $type_card, $ref_code, "", "", "");
+
+        if ($rs->error_code != '00') {
+            Session::put('thongbao', 'naptienkhongthanhcong');
+            Session::put('thongbaokhongthanhcong', 'Hệ thống đang bảo trì');
+            return redirect('/thongbao', ['tb' => '']);
+        } else {
+            $khachhang = Session::get('khachhang');
+            $maphuongthuc = 'card';
+            $soTienMoi = $khachhang->sodu + (int)$rs->card_amount;
+            $khachhang->sodu = $soTienMoi;
+
+            Session::put('khachhang', $khachhang);
+
+
+            KhachHang::where('taikhoan', $khachhang->taikhoan)->update(['sodu' => $soTienMoi]);
+
+            Session::put('thongbao', 'naptienthanhcong');
+            Session::put('tbnaptienLoaiThe', 'Bạn vừa nạp thành công thẻ: ' . $rs->type_card);
+            Session::put('tbnaptienSoTien', 'Số tiền nhận được: ' . $rs->card_amount);
+            Session::put('tbnaptienThoiGian', 'Thời gian giao dịch: ' . $ngayGioHienTai);
+
+            $lichSuNapTien = new LichSuNapTien();
+            $lichSuNapTien->manaptien = $rs->card_serial;
+            $lichSuNapTien->taikhoan = $khachhang->taikhoan;
+            $lichSuNapTien->thoigiannaptien = $ngayGioHienTai;
+            $lichSuNapTien->sotien = $rs->card_amount;
+            $lichSuNapTien->maphuongthuc = $maphuongthuc;
+
+            $lichSuNapTien->save();
+
+            return redirect('/thongbao', ['tb' => '']);
+        }
+
+    }
+
 }
+

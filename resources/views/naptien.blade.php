@@ -4,22 +4,22 @@
     <div class="container">
 
         <div class="col-sm-4">
-            <h3>Nạp tiền bằng thẻ cào</h3>
+            <h3>Nạp tiền bằng thẻ cào (Đang bảo trì)</h3>
             <hr>
-            <form action="">
+            <form action="napthe">
                 <label for="loaithe">Chọn loại thẻ cào</label>
                 <select name="loaithe" class="form-control" id="loaithe">
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
+                    <option value="VMS">Mobifone</option>
+                    <option value="VNP">Vinaphone</option>
+                    <option value="VIETTEL">Viettel</option>
+                    <option value="VCOIN">VTC</option>
+                    <option value="GATE">Gate</option>
                 </select>
-                <label for="seri">Chọn loại thẻ cào</label>
-                <input type="text" class="form-control" name="seri" id="seri" placeholder="Số seri">
-                <label for="sothe">Chọn loại thẻ cào</label>
-                <input type="text" class="form-control" id="sothe" name="sothe" placeholder="Mã số thẻ"><br>
-                <input type="submit" class="btn btn-success" value="Nạp thẻ">
+                <label for="seri">Nhập số seri</label>
+                <input type="text" class="form-control" id="txtSoSeri" name="txtSoSeri" placeholder="Số seri">
+                <label for="sothe">Nhập mã thẻ cào</label>
+                <input type="text" class="form-control" id="txtSoPin" name="txtSoPin" placeholder="Mã số thẻ"><br>
+                <input type="submit" disabled class="btn btn-success" value="Nạp thẻ">
             </form>
             <p><b>- Chú ý: Các bạn sẽ mất 25% giá trị thẻ nạp với tất cả nhà mạng</b></p>
         </div>
@@ -35,6 +35,5 @@
             <h3>Lịch sử nạp tiền</h3>
             <hr>
         </div>
-
     </div>
 @endsection

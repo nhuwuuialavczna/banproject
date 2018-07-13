@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 $pass = '92d73ff0f0e48826ad78341493208991';
+$matkhauketnoi = 'dcf54509fc4c99e3f5594d1467820682';
+$id = '55894';
+
+Route::get('napthe', 'AccountController@NapThe');
 
 Route::get('/', 'HomeController@Index');
 Route::get('/dangnhap', 'HomeController@DangNhap');
@@ -41,7 +45,7 @@ Route::group(['prefix' => 'account'], function () {
     Route::get('trangxacnhan', 'AccountController@TrangXacNhan');
 
     Route::get('doimatkhau', 'AccountController@DoiMatKhau');
-
+    Route::get('napthe', 'AccountController@NapThe');
     Route::get('laymatkhau', 'AccountController@LayMatKhau');
     Route::get('checkemail', 'AccountController@CheckEmail');
     Route::get('checkEmailAndUsername', 'AccountController@CheckEmailAndCheckUsername');

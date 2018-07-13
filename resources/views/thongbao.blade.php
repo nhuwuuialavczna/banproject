@@ -21,6 +21,16 @@
             <p>Pass giải nén nếu có: <b>{{Session::get('thongbaotaixuong')-> passgianen}}</b></p>
         @endif
 
+        @if(Session::get('thongbao')== 'naptienthanhcong')
+            <h3>{{Session::get('tbnaptienLoaiThe')}}</h3>
+            <p>{{Session::get('tbnaptienSoTien')}}</p>
+            <p>{{Session::get('tbnaptienThoiGian')}}</p>
+        @endif
+
+        @if(Session::get('thongbao')== 'naptienkhongthanhcong')
+            <h3>{{Session::get('thongbaokhongthanhcong')}}</h3>
+        @endif
+
         <a class="btn btn-success" href="/">Về trang chủ</a>
     </div>
 @endsection
