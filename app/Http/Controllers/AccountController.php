@@ -129,7 +129,7 @@ class AccountController extends Controller
     //vzxvczxcvzxvc
     public function DoiMatKhau(Request $request)
     {
-        $matkhau = $request->matkhau;
+        $matkhau = $request->matkhaumoi;
         $kh = Session::get('khachhang');
         KhachHang::where('taikhoan', $kh->taikhoan)->update(['matkhau' => $matkhau]);
         return 'ok';
